@@ -27,6 +27,9 @@ const Credit = () => {
     }
   }, [allGold]);
 
+  const handleButtonAboutPress = () => {
+    navigation.navigate("About");
+  };
   const handleButtonPress = () => {
     if (currentHealth === 0) {
       showMessage({
@@ -48,20 +51,42 @@ const Credit = () => {
 
   const handleButtonAnimation = () => {
     Animated.sequence([
-      Animated.timing(scaleValue, { toValue: 0.9, duration: 100, useNativeDriver: true }),
-      Animated.timing(scaleValue, { toValue: 1, duration: 100, useNativeDriver: true }),
+      Animated.timing(scaleValue, {
+        toValue: 0.9,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scaleValue, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }),
     ]).start();
   };
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.aboutIconContainer}
+        onPress={handleButtonAboutPress}
+      >
+        <Ionicons
+          style={styles.aboutIcon}
+          name="information-circle-outline"
+          size={24}
+          color="gray"
+        />
+      </TouchableOpacity>
       <View style={styles.healthContainer}>
         <Ionicons name="heart" size={20} color="red" style={styles.heartIcon} />
         <Text style={styles.healthText}>{currentHealth}</Text>
       </View>
 
       <TouchableOpacity
-        style={[styles.button, currentHealth === 0 ? styles.disabledButton : null]}
+        style={[
+          styles.button,
+          currentHealth === 0 ? styles.disabledButton : null,
+        ]}
         onPress={handleButtonPress}
         onPressOut={handleButtonAnimation}
       >
@@ -77,7 +102,10 @@ const Credit = () => {
           Bağış Yap
         </Animated.Text>
       </TouchableOpacity>
-      <CustomModal visible={modalVisible} onClose={() => setModalVisible(false)} />
+      <CustomModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+      />
 
       <FlashMessage position="top" />
     </View>

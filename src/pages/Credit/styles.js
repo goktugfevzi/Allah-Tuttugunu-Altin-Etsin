@@ -32,7 +32,7 @@ export default StyleSheet.create({
   },
   healthContainer: {
     position: "absolute",
-    top: height * 0.1, // Yüksekliğin bir kısmını boşluğa ayır
+    top: height * 0.1,
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 10,
@@ -68,12 +68,19 @@ export default StyleSheet.create({
     fontSize: width * 0.04,
     color: "white",
     fontWeight: "bold",
-  },  donationButtonText: {
-    fontSize: width * 0.04,
-    color: "white",
-    fontWeight: "bold",
   },
   disabledButton: {
     opacity: 0.5,
+  },
+  aboutIconContainer: {
+    position: "absolute",
+    top: height * 0.02,
+    right: width * 0.02,
+    zIndex: 1,
+    padding: width * 0.03,
+  },
+  aboutIcon: {
+    fontSize: width * 0.06,
+    color: "white",
   },
 });

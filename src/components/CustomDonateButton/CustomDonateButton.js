@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, View ,Dimensions} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import styles from "./styles";
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 const CustomButton = ({ onPress, text, isSelected, backgroundColor }) => {
   const renderCanText = () => {
     if (text === "5 TL" || text === "10 TL" || text === "20 TL" || text === "50 TL" || text === "100 TL") {

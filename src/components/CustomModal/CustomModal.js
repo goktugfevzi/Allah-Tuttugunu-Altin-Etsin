@@ -2,28 +2,18 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import styles from "./styles";
 import CustomButton from "../CustomDonateButton/CustomDonateButton";
-import { increaseHealth } from "../../context/healthSlice";
-import { useDispatch } from "react-redux";
+import { useGlassfy } from '../../providers/GlassfyProvider';
 
 const CustomModal = ({ visible, onClose }) => {
   const [selectedButton, setSelectedButton] = useState(null);
-  const [result, setResult] = React.useState(null);
-  const [isConnected, setIsConnected] = React.useState(false);
-  const [isCancelled, setIsCancelled] = React.useState(false);
-  const dispatch = useDispatch();
-  
-  //       "com.tuttugunAltinOlsun.item5",
-  //       "com.tuttugunAltinOlsun.item10",
-  //       "com.tuttugunAltinOlsun.item20",
-  //       "com.tuttugunAltinOlsun.item50",
-  //       "com.tuttugunAltinOlsun.item100"
-
+  const { purchase } = useGlassfy();
   const handleDonate = async () => {
     if (selectedButton === null) {
       Alert.alert("Uyarı", "Bağış miktarını seçiniz.");
       return;
     }
 
+    await purchase("item"+selectedButton);
 
   };
 

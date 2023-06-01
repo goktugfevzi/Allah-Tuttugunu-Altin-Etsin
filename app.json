@@ -2,7 +2,7 @@
   "expo": {
     "name": "Tuttugun Altin Olsun",
     "slug": "TuttugunAltinOlsun",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,19 +11,21 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "package": "com.tuttugunAltinOlsun",
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "com.android.vending.BILLING",
+        "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

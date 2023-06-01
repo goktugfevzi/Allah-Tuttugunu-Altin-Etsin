@@ -11,22 +11,19 @@ const images = {
   gold: require("../../../assets/gold.png"),
 };
 
-const ImageCard = ({ item,onPress }) => {
+const ImageCard = ({ item, onPress }) => {
   const [image, setImage] = useState(item);
   const allGoldControl = useSelector((state) => state.image.images);
-
   useEffect(() => {
-    if(!(allGoldControl[item])){
+    if (!allGoldControl[item]) {
       setImage(item);
     }
   }, [allGoldControl]);
   const handlePress = () => {
- 
     if (image !== "gold") {
       setImage("gold");
-    } 
+    }
     onPress(item);
-
   };
 
   return (
