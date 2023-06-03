@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import styles from "./styles";
 import CustomButton from "../CustomDonateButton/CustomDonateButton";
-import { useGlassfy } from '../../providers/GlassfyProvider';
+import { useGlassfy } from "../../providers/GlassfyProvider";
 
 const CustomModal = ({ visible, onClose }) => {
   const [selectedButton, setSelectedButton] = useState(null);
@@ -12,9 +12,7 @@ const CustomModal = ({ visible, onClose }) => {
       Alert.alert("Uyarı", "Bağış miktarını seçiniz.");
       return;
     }
-
-    await purchase("item"+selectedButton);
-
+    await purchase("item" + selectedButton);
   };
 
   const handleButtonPress = (amount) => {

@@ -1,4 +1,4 @@
-import { StyleSheet,Dimensions } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     container:{
@@ -7,6 +7,4 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
     },
-   
-  
 })

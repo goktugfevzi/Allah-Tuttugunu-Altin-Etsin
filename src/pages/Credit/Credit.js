@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, Animated, Alert } from "react-native";
+import { View, Text, TouchableOpacity, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
@@ -66,7 +66,7 @@ const Credit = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
+      {currentHealth == 0 ? <TouchableOpacity
         style={styles.aboutIconContainer}
         onPress={handleButtonAboutPress}
       >
@@ -76,7 +76,8 @@ const Credit = () => {
           size={24}
           color="gray"
         />
-      </TouchableOpacity>
+      </TouchableOpacity>:null}
+     
       <View style={styles.healthContainer}>
         <Ionicons name="heart" size={20} color="red" style={styles.heartIcon} />
         <Text style={styles.healthText}>{currentHealth}</Text>

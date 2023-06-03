@@ -2,7 +2,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Glassfy } from "react-native-glassfy-module";
 import { increaseHealth } from "../context/healthSlice";
 import { useDispatch } from "react-redux";
-import { GLASSFY_API } from "../Constants";
+import { showMessage } from "react-native-flash-message";
+import { GLASSFY_API } from "@env";
 
 const GlassfyContext = createContext(null);
 
@@ -10,7 +11,6 @@ export const GlassfyProvider = ({ children }) => {
   const [offerings, setOfferings] = useState([]);
   const dispatch = useDispatch();
   const [isReady, setIsReady] = useState(false);
-
   useEffect(() => {
     const init = async () => {
       // Intialise Glassfy and set our provider ready
@@ -18,10 +18,9 @@ export const GlassfyProvider = ({ children }) => {
         await Glassfy.initialize(GLASSFY_API, false);
       } catch (e) {
         console.log(e);
-        console.log("initialize");
       }
-      setIsReady(true);
       await loadOfferings();
+      setIsReady(true);
     };
     init();
   }, []);
@@ -30,7 +29,6 @@ export const GlassfyProvider = ({ children }) => {
   const loadOfferings = async () => {
     try {
       const sku = await Glassfy.offerings();
-      console.log(sku.all);
       setOfferings(sku.all);
     } catch (err) {
       console.log(err);
@@ -51,6 +49,7 @@ export const GlassfyProvider = ({ children }) => {
 
     if (!skuObject) {
       console.log(`SKU not found: ${sku}`);
+      console.log(skuObject);
       return;
     }
 
@@ -59,30 +58,43 @@ export const GlassfyProvider = ({ children }) => {
       productId: skuObject.productId,
       store: skuObject.store,
     };
-    console.log(skuDTO);
     try {
       const transaction = await Glassfy.purchaseSku(skuDTO);
-      
-          if (transaction.receiptValidated) {
-            
-            handleSuccessfulTransactionResult(transaction);
-          }
-      
+      console.log(transaction);
+      if (transaction.receiptValidated || transaction.permissions) {
+        handleSuccessfulTransactionResult(skuDTO);
+      }
     } catch (error) {
-      console.log(error);
+      if (error.code.indexOf("PendingPurchase") >= 0) {
+        console.log("içerideyim pending");
+        showMessage({
+          message: "Teşekkürler <3",
+          description:
+            "Bir Öğrenciye Destek Oldunuz, Ödeme tamamlandığında can verilecektir.",
+          type: "info",
+        });
+      } else {
+        showMessage({
+          message: "Başarısız",
+          description: "Satın Alma İşlemi Gerçekleşmedi",
+          type: "danger",
+        });
+      }
     }
   };
 
   // Update the user state based on what we purchased
   const handleSuccessfulTransactionResult = (transaction) => {
     const productID = transaction.productId;
-
+    console.log("handlesuccesful çalışıyor");
     if (productID.indexOf("item5") >= 0) {
       dispatch(increaseHealth(5));
+      console.log("item5");
     }
 
     if (productID.indexOf("item10") >= 0) {
       dispatch(increaseHealth(10));
+      console.log("item10");
     }
 
     if (productID.indexOf("item20") >= 0) {
@@ -91,10 +103,17 @@ export const GlassfyProvider = ({ children }) => {
     }
     if (productID.indexOf("item50") >= 0) {
       dispatch(increaseHealth(50));
+      console.log("item556");
     }
     if (productID.indexOf("item100") >= 0) {
+      console.log("item1312315");
       dispatch(increaseHealth(100));
     }
+    showMessage({
+      message: "Teşekkürler <3",
+      description: "Bir Öğrenciye Destek Oldunuz",
+      type: "info",
+    });
   };
 
   const value = {

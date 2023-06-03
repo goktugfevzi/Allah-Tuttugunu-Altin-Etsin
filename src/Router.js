@@ -51,9 +51,9 @@ export default function Router() {
           <Stack.Screen
             name="About"
             component={About}
-            // options={{
-            //   headerTitle: HomeHeaderTitle,
-            // }}
+            options={{
+              headerTitle: "Hakkımda",
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>

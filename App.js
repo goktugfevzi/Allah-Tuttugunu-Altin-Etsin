@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import Router from "./src/Router";
-import React,{useEffect} from 'react'
+import React from 'react'
 import FlashMessage from "react-native-flash-message";
 //REDUX
 import { configureStore } from '@reduxjs/toolkit';

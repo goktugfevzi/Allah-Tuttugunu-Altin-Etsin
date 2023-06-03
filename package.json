@@ -26,7 +26,7 @@
     "react-native-pagination": "^1.5.5",
     "react-native-paper": "^5.2.0",
     "react-native-reanimated": "~2.14.4",
-    "react-native-safe-area-context": "^4.5.0",
+    "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
     "react-navigation": "^4.4.4",
     "react-redux": "^8.0.5"

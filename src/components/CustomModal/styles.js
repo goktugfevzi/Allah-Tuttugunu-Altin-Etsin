@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modal: {
-    backgroundColor: "#F2F2F2", // Gri tonları
+    backgroundColor: "#F2F2F2", 
     width: width * 0.9,
     padding: width * 0.04,
     borderRadius: 5,
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   modalText: {
     fontSize: 18,
     marginBottom: height * 0.02,
-    color: "#333333", // Gri tonlarına uyumlu renk
+    color: "#333333", 
   },
   buttonContainer: {
     flexDirection: "row",
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FF5555", // Kırmızı tonları
+    backgroundColor: "#FF5555", 
     marginRight: 10,
   },
   donateButton: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#55DD55", // Yeşil tonları
+    backgroundColor: "#55DD55",
   },
 });
 
