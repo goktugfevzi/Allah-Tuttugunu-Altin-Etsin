@@ -6,7 +6,6 @@ import About from "./pages/About/About";
 import React from "react";
 import { View, Text } from "react-native";
 import { GlassfyProvider } from "./providers/GlassfyProvider";
-
 const Stack = createNativeStackNavigator();
 
 const HomeHeaderTitle = () => (

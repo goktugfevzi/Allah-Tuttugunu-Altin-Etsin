@@ -12,7 +12,8 @@ const CustomModal = ({ visible, onClose }) => {
       Alert.alert("Uyarı", "Bağış miktarını seçiniz.");
       return;
     }
-    await purchase("item" + selectedButton);
+
+    await purchase("item" + selectedButton, onClose);
   };
 
   const handleButtonPress = (amount) => {

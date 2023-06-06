@@ -2,19 +2,18 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, Linking } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./styles";
-import { INSTAGRAM_API, LINKEDIN_API, GITHUB_API } from "@env";
 
 const About = () => {
   const handleLinkedInPress = () => {
-    Linking.openURL(LINKEDIN_API);
+    Linking.openURL("https://www.linkedin.com/in/goktugfevziozcelik/");
   };
 
   const handleInstagramPress = () => {
-    Linking.openURL(INSTAGRAM_API);
+    Linking.openURL("https://www.instagram.com/goktug.fevzi/");
   };
 
   const handleGithubPress = () => {
-    Linking.openURL(GITHUB_API);
+    Linking.openURL("https://github.com/goktugfevzi");
   };
 
   return (

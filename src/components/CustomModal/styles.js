@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modal: {
-    backgroundColor: "#F2F2F2", 
+    backgroundColor: "#F2F2F2",
     width: width * 0.9,
     padding: width * 0.04,
     borderRadius: 5,
@@ -18,24 +18,24 @@ const styles = StyleSheet.create({
   modalText: {
     fontSize: 18,
     marginBottom: height * 0.02,
-    color: "#333333", 
+    color: "#333333",
   },
   buttonContainer: {
     flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "space-between",
     marginBottom: height * 0.02,
   },
   cancelButton: {
-    flex: 1,
+    width: "49%",
     height: 40,
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FF5555", 
-    marginRight: 10,
+    backgroundColor: "#FF5555",
   },
   donateButton: {
-    flex: 1,
+    width: "49%", 
     height: 40,
     borderRadius: 5,
     justifyContent: "center",

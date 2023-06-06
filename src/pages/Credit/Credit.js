@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, Animated } from "react-native";
+import { View, Text, TouchableOpacity, Animated, BackHandler } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import FlashMessage, { showMessage } from "react-native-flash-message";
 import { useDispatch, useSelector } from "react-redux";
+
 import { resetAllGold, checkAllGold } from "../../context/imageSlice";
 import { decreaseHealth } from "../../context/healthSlice";
-import FlashMessage, { showMessage } from "react-native-flash-message";
 import CustomModal from "../../components/CustomModal/CustomModal";
+
 
 const Credit = () => {
   const navigation = useNavigation();
@@ -30,6 +32,7 @@ const Credit = () => {
   const handleButtonAboutPress = () => {
     navigation.navigate("About");
   };
+  
   const handleButtonPress = () => {
     if (currentHealth === 0) {
       showMessage({
@@ -64,20 +67,41 @@ const Credit = () => {
     ]).start();
   };
 
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        showMessage({
+          message: "Nereye Gidiyorsun Ya",
+          description: "Geri gelmek için Tekrar Oyna'ya bas",
+          type: "default",
+        });
+        return true;
+      };
+      
+      const backHandler = BackHandler.addEventListener("hardwareBackPress", onBackPress);
+
+      return () => {
+        backHandler.remove();
+      };
+    }, [])
+  );
+
   return (
     <View style={styles.container}>
-      {currentHealth == 0 ? <TouchableOpacity
-        style={styles.aboutIconContainer}
-        onPress={handleButtonAboutPress}
-      >
-        <Ionicons
-          style={styles.aboutIcon}
-          name="information-circle-outline"
-          size={24}
-          color="gray"
-        />
-      </TouchableOpacity>:null}
-     
+      {currentHealth == 0 ? (
+        <TouchableOpacity
+          style={styles.aboutIconContainer}
+          onPress={handleButtonAboutPress}
+        >
+          <Ionicons
+            style={styles.aboutIcon}
+            name="information-circle-outline"
+            size={24}
+            color="gray"
+          />
+        </TouchableOpacity>
+      ) : null}
+
       <View style={styles.healthContainer}>
         <Ionicons name="heart" size={20} color="red" style={styles.heartIcon} />
         <Text style={styles.healthText}>{currentHealth}</Text>

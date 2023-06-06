@@ -4,7 +4,7 @@ const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   button: {
-    width: width * 0.14,
+    width: width * 0.14, // Genişliği ekran genişliğinin %40'ı kadar ayarladım
     height: 60,
     borderRadius: 5,
     marginHorizontal: width * 0.01,
